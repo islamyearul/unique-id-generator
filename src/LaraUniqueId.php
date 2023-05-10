@@ -10,7 +10,7 @@ class LaraUniqueId
         $prefix = empty($prefix) ? config('lara-unique-id.prefix') : $prefix;
         $prefix = Str::upper($prefix);
         $pad_len =  empty($pad_len) ? config('lara-unique-id.pad_len') : $pad_len;
-        $pad_len = intval($pad_len);
+        $pad_len = intval(5);
         // check is year true from config
         if(config('lara-unique-id.year') == true){
             $year = empty($year) ? config('lara-unique-id.year') : $year;
@@ -25,7 +25,7 @@ class LaraUniqueId
         $pad_string = empty($pad_string) ? config('lara-unique-id.pad_string') : $pad_string;
 
         if ($pad_len <= strlen($input)) {
-            trigger_error('<strong>$pad_len</strong> cannot be less than or equal to the length of <strong>$input</strong> to generate invoice number', E_USER_ERROR);
+            trigger_error('<strong>$pad_len</strong> cannot be less than or equal to the length of <strong>$input</strong> to generate Unique number', E_USER_ERROR);
         }
 
         if (is_string($prefix)) {
