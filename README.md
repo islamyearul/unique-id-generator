@@ -112,8 +112,11 @@ php artisan vendor:publish --tag="lara-unique-id-views"
 
 ```php
 use Yearul\LaraUniqueId\LaraUniqueId; // import this in the top of the class
-$laraUniqueId = new LaraUniqueId();
-echo $laraUniqueId->generate(2);  //YEA-2023-00002
+
+
+ $value =  LaraUniqueId::generate(2);
+echo $value;
+
 
 ```
 

@@ -5,7 +5,7 @@ use Illuminate\Support\Str;
 
 class LaraUniqueId
 {
-    public function generate($input,  $pad_len = null, $pad_string = null, $prefix = null, $year = null)
+    public static function generate($input,  $pad_len = null, $pad_string = null, $prefix = null, $year = null)
     {
         $prefix = empty($prefix) ? config('lara-unique-id.prefix') : $prefix;
         $prefix = Str::upper($prefix);
