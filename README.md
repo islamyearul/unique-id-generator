@@ -113,10 +113,11 @@ php artisan vendor:publish --tag="lara-unique-id-views"
 ```php
 use Yearul\LaraUniqueId\LaraUniqueId; // import this in the top of the class
 
+    $value =  LaraUniqueId::generate(2);
+    echo $value;
 
- $value =  LaraUniqueId::generate(2);
-echo $value;
-
+//  generate($input,  $pad_len = null, $pad_string = null, $prefix = null, $year = null)
+ // the generate method received 5 value, $input value is mandatory and others value not mandatory( thoes can get from config file)
 
 ```
 
