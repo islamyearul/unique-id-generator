@@ -13,14 +13,13 @@ class LaraUniqueId
         $pad_len = intval(5);
         // check is year true from config
         if(config('lara-unique-id.year') == true){
-            $year = empty($year) ? config('lara-unique-id.year') : $year;
+            $year = empty($year) ? config('lara-unique-id.year_val') : $year;
             $year = intval($year);
         }else{
             $year = '';
         }
 
         $input = intval($input); 
-        $input = $input + $start_from;
         $pad_direction =config('lara-unique-id.pad_direction');
         $pad_string = empty($pad_string) ? config('lara-unique-id.pad_string') : $pad_string;
 
@@ -29,7 +28,7 @@ class LaraUniqueId
         }
 
         if (is_string($prefix)) {
-            return sprintf("%s%s%s%s", $prefix,$year, '-', str_pad($input, $pad_len, $pad_string,  $pad_direction));
+            return sprintf("%s%s%s%s%s", $prefix,'-',$year, '-', str_pad($input, $pad_len, $pad_string,  $pad_direction));
         }
 
         return sprintf("%s%s%s%s", $year, '-', str_pad($input, $pad_len, $pad_string,  $pad_direction));

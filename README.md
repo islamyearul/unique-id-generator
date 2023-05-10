@@ -1,19 +1,15 @@
 # This is my package lara-unique-id
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/yearul/lara-unique-id.svg?style=flat-square)](https://packagist.org/packages/yearul/lara-unique-id)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/yearul/lara-unique-id/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/yearul/lara-unique-id/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/yearul/lara-unique-id/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/yearul/lara-unique-id/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/yearul/lara-unique-id.svg?style=flat-square)](https://packagist.org/packages/yearul/lara-unique-id)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/yearul/lara-unique-id.svg?style=flat-square)](https://packagist.org/packages/yearul/unique-id-generator)
+
+<!-- [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/yearul/lara-unique-id/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/yearul/lara-unique-id/actions?query=workflow%3Arun-tests+branch%3Amain)
+
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/yearul/lara-unique-id/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/yearul/lara-unique-id/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain) -->
+
+[![Total Downloads](https://img.shields.io/packagist/dt/yearul/lara-unique-id.svg?style=flat-square)](https://packagist.org/packages/yearul/unique-id-generator)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/lara-unique-id.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/lara-unique-id)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -40,6 +36,68 @@ This is the contents of the published config file:
 
 ```php
 return [
+    /* 
+    |--------------------------------------------------------------------------
+    | Unique Id Generator Config
+    |--------------------------------------------------------------------------
+    |
+    | This is the config file for unique id generator. You can override
+    | this config file by placing it in your application's config directory
+    | and change the values as per your need.
+    |
+    */
+
+     /*
+    |--------------------------------------------------------------------------
+    | Default Pad Length
+    |--------------------------------------------------------------------------
+    |
+    | If no  pad length is provided to the generate method, this value will be used
+    |
+    */
+    "pad_len" => 5,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Prefix
+    |--------------------------------------------------------------------------
+    |
+    | If no prefix is provided to the generate method, this value will be used
+    |
+    */
+    "prefix" => "YEA",
+    /*
+    |--------------------------------------------------------------------------
+    | Default year and year_val
+    |--------------------------------------------------------------------------
+    |
+    | If no year and year_val is provided to the generate method, this value will be used
+    |
+    */
+
+    "year" => true,
+    "year_val" => date('Y'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default  pad string
+    |--------------------------------------------------------------------------
+    |
+    | If no pad string is provided to the generate method, this value will be used
+    |
+    */
+
+    "pad_string" => '0',   // 0, #, *, $.......etc
+    /*
+    |--------------------------------------------------------------------------
+    | Default  pad_direction
+    |--------------------------------------------------------------------------
+    |
+    | If no pad_direction is provided to the generate method, this value will be used
+    |
+    */
+
+    "pad_direction" => STR_PAD_LEFT,   // STR_PAD_LEFT, STR_PAD_RIGHT
 ];
 ```
 
@@ -51,9 +109,12 @@ php artisan vendor:publish --tag="lara-unique-id-views"
 
 ## Usage
 
+
 ```php
-$laraUniqueId = new Yearul\LaraUniqueId();
-echo $laraUniqueId->echoPhrase('Hello, Yearul!');
+use Yearul\LaraUniqueId\LaraUniqueId; // import this in the top of the class
+$laraUniqueId = new LaraUniqueId();
+echo $laraUniqueId->generate(2);  //YEA-2023-00002
+
 ```
 
 ## Testing
